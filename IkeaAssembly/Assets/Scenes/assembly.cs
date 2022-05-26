@@ -53,8 +53,8 @@ public class assembly : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        Debug.Log("Step: "+step);
-        Debug.Log("Animate: "+ animate);
+        //Debug.Log("Step: "+step);
+        //Debug.Log("Animate: "+ animate);
         
         b = Camera.main.transform.position + Vector3.forward;
         rotation = transform.rotation;
@@ -97,11 +97,11 @@ public class assembly : MonoBehaviour
             if(animate && hit.collider.CompareTag("nextStep"))
             {
             
-                Debug.Log("POINT: "+point);
-                Debug.Log("Instantiated: "+instantiated.Count);
-                Debug.Log("InstantiatedTools: "+instantiatedTools.Count);
-                Debug.Log("Tool Step: " + toolStep);
-                Debug.Log("Part Step: " + partStep);
+                //Debug.Log("POINT: "+point);
+                //Debug.Log("Instantiated: "+instantiated.Count);
+                //Debug.Log("InstantiatedTools: "+instantiatedTools.Count);
+                //Debug.Log("Tool Step: " + toolStep);
+                //Debug.Log("Part Step: " + partStep);
                 if (tool)
                 {
                     String temp = (point).ToString();
@@ -138,10 +138,9 @@ public class assembly : MonoBehaviour
             
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Console.WriteLine(e);
-            throw;
+            
         }
         
         
@@ -175,7 +174,7 @@ public class assembly : MonoBehaviour
     {
          
         //Debug.Log(parts[step]);
-        Debug.Log(Quaternion.identity);
+       // Debug.Log(Quaternion.identity);
         //instantiated.Add(Instantiate(prefabs[step],vectors[step],Quaternion.identity));
         if (partStep.Equals(0))
         {
@@ -205,7 +204,7 @@ public class assembly : MonoBehaviour
                 
         }
             
-        //Debug.Log(step);
+        Debug.Log(step);
         step++;
         
     }
