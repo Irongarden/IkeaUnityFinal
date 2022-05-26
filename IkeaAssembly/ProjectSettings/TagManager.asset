@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - plus
+  - resetCam
+  - rightRot
+  - leftRot
+  - minus
+  - nextStep
+  - prevStep
   layers:
   - Default
   - TransparentFX

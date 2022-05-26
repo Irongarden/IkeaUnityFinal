@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,10 @@ public class Inputs : MonoBehaviour
 {
     private float oldTouchDistance = 0;
     private float touchDistance;
-    [FormerlySerializedAs("camera")] [SerializeField]
+    [SerializeField]
     private GameObject cameraObject;
+
+    private Boolean animationRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,22 +22,48 @@ public class Inputs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animationRunning = GetComponent<assembly>().getAnimationBool();
         zoomCheck();
         // Screen Clicks
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        
-        if (Input.GetKey(KeyCode.Mouse0))
+
+        try
         {
-            if (Physics.Raycast(ray,out hit))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                if (hit.collider.CompareTag("resetCam"))
+                if (Physics.Raycast(ray,out hit))
                 {
-                    cameraObject.GetComponent<cameraController>().centerCamera();
+                    if (hit.collider.CompareTag("resetCam"))
+                    {
+                        cameraObject.GetComponent<cameraController>().centerCamera();
+                    }
+
+                    if (hit.collider.CompareTag("nextStep") && !animationRunning)
+                    {
+                        //GetComponent<assembly>().nextStep(ray,hit);
+                        //hit = new RaycastHit();
+                    }
+
+                    if (!animationRunning && hit.collider.CompareTag("prevStep"))
+                    {
+                        cameraObject.GetComponent<cameraController>().centerCamera();
+                    }
+                    if(hit.collider.CompareTag("Finish"))
+                    {
+                        GetComponent<assembly>().finishBuild();
+                    }
                 }
             }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
+       
     }
 
     private void calculateTouchDistance()
