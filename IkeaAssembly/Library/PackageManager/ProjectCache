@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637891742790549551
-    m_Hash: 267683508
+      ticks: 637892319641378625
+    m_Hash: 3702781156
   m_LockFileStatus:
     m_FilePath: C:/Users/mathi/OneDrive - ViaUC/Skrivebord/Bachelor/IkeaUnityFinal/IkeaAssembly/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637891742790679545
-    m_Hash: 3680538951
+      ticks: 637892319641388630
+    m_Hash: 3396090243
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

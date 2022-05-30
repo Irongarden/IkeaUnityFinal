@@ -22,6 +22,8 @@ public class assembly : MonoBehaviour
 
     [SerializeField]
     private GameObject finishPanel;
+
+    [SerializeField] private GameObject instructionText;
     
     private List<GameObject> instantiated;
     private List<GameObject> instantiatedTools;
@@ -58,15 +60,11 @@ public class assembly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //Debug.Log(animationRunning);
+
         timer += Time.deltaTime;
-        //Debug.Log("Step: "+step);
-        //Debug.Log("Animate: "+ animate);
-        
+
         b = Camera.main.transform.position + Vector3.forward;
         rotation = transform.rotation;
-        //hit = new RaycastHit();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
         if (step>=maxStep && !animationRunning)
@@ -76,7 +74,6 @@ public class assembly : MonoBehaviour
             {
                 finishTime = timer;
                 finishPanel.SetActive(true);
-                Debug.Log("Finished - " +finishTime);
             }
             click(ray);
             return;
@@ -175,9 +172,9 @@ public class assembly : MonoBehaviour
         if (step == maxStep)
         {
             Debug.Log("FINISH - Build Time: " + finishTime);
-            assemblyFinishText.text = "Congrats! You completed the assembly of ProductName in " + finishTime + " Seconds";
-
+            assemblyFinishText.text = "Congrats! You completed the assembly in " + finishTime + " Seconds";
             assemblyFinishText.enabled = true;
+            
         }
     }
     
@@ -185,12 +182,10 @@ public class assembly : MonoBehaviour
 
     private void instantiate()
     {
-         
-        //Debug.Log(parts[step]);
-       // Debug.Log(Quaternion.identity);
-        //instantiated.Add(Instantiate(prefabs[step],vectors[step],Quaternion.identity));
+        
         if (partStep.Equals(0))
         {
+            instructionText.GetComponent<text>().setInstruction(0);
             instantiated.Add(Instantiate(parts[partStep],a,Quaternion.identity));
             instantiated[partStep].transform.parent = transform;
             partStep++;
@@ -200,7 +195,7 @@ public class assembly : MonoBehaviour
         {
             if (!tool)
             {
-                
+                instructionText.GetComponent<text>().setInstruction(2);
                 instantiated.Add(Instantiate(parts[partStep],b,rotation));
                 instantiated[partStep].transform.parent = transform;
                 partStep++;
@@ -210,6 +205,7 @@ public class assembly : MonoBehaviour
             }
             else
             {
+                instructionText.GetComponent<text>().setInstruction(1);
                 instantiatedTools.Add(Instantiate(tools[0],b,rotation));
                 instantiatedTools[toolStep].transform.parent = transform;
                 toolStep++;

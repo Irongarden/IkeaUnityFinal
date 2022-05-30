@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NFinal.Collections</name>
+    </assembly>
+    <members>
+        <member name="T:NFinal.Collections.GetDictionaryValue`2">
+            <summary>
+            获取字典的值的代理
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <typeparam name="TParam"></typeparam>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NFinal.Collections.FastAsyncDictionary`2">
+            <summary>
+            多线程的快速字典类
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.GetOrAddValue``1(`0,NFinal.Collections.GetDictionaryValue{`1,``0},``0)">
+            <summary>
+            多线程的获取和生成value值,适用于生成value值比较耗时的操作
+            </summary>
+            <typeparam name="TParam"></typeparam>
+            <param name="key"></param>
+            <param name="getValueDelegate"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NFinal.Collections.FastAsyncDictionary`2.Item(`0)">
+            <summary>
+            元素访问
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.#ctor">
+            <summary>
+            字典初始化
+            </summary>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.Add(`0,`1)">
+            <summary>
+            添加元素
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.Clear">
+            <summary>
+            清除所有元素
+            </summary>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.Contains(`0)">
+            <summary>
+            查找元素
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.ContainsKey(`0)">
+            <summary>
+            查找元素
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.ContainsValue(`1)">
+            <summary>
+            查找元素
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            获取元素
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NFinal.Collections.FastAsyncDictionary`2.Count">
+            <summary>
+            元素数量
+            </summary>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.Remove(`0)">
+            <summary>
+            移除元素
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            复制元素
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:NFinal.Collections.FastAsyncDictionary`2.Finalize">
+            <summary>
+            析构释放对象时，把读写锁释放掉
+            </summary>
+        </member>
+        <member name="T:NFinal.Collections.DictionaryHelper">
+            <summary>
+            微软.net core官方开发人员以MIT协议开源的快速字典类，比传统的Dictionary快30%-40%。
+            此处做为借鉴。
+            </summary>
+        </member>
+        <member name="F:NFinal.Collections.DictionaryHelper.kMinBuckets">
+            <summary>
+            Minimum size we're willing to let hashtables be.
+            Must be a power of two, and at least 4.
+            Note, however, that for a given hashtable, the initial size is a function of the first constructor arg, and may be > kMinBuckets.
+            </summary>
+        </member>
+        <member name="F:NFinal.Collections.DictionaryHelper.kInitialCapacity">
+            <summary>
+            By default, if you don't specify a hashtable size at construction-time, we use this size.  Must be a power of two, and  at least kMinBuckets.
+            </summary>
+        </member>
+        <member name="T:NFinal.Collections.FastDictionary`2">
+            <summary>
+            快速字典类，比原生的效率高30%左右。
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="M:NFinal.Collections.FastDictionary`2.Lookup(`0)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns>Position of the node in the array</returns>
+        </member>
+        <member name="T:NFinal.NameValueCollection">
+            <summary>
+            代替微软官方的NameValueCollection类型，具有无损自动转换功能。
+            </summary>
+        </member>
+        <member name="P:NFinal.NameValueCollection.Content">
+            <summary>
+            参数内容
+            </summary>
+        </member>
+        <member name="M:NFinal.NameValueCollection.GetXmlDocument">
+            <summary>
+            获取由客户端提交过来的xml数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.NameValueCollection.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="P:NFinal.NameValueCollection.Item(System.String)">
+            <summary>
+            索引属性
+            </summary>
+            <param name="key">key</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:NFinal.NameValueCollection.Add(System.String,System.String)">
+            <summary>
+            添加KeyValue
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NFinal.NameValueCollection.GetEnumerator">
+            <summary>
+            获取枚举类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.NameValueCollection.ToString">
+            <summary>
+            把keyValue转为QueryString格式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.NameValueCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            获取枚举类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NFinal.StringContainer">
+            <summary>
+            字符串容器类，用于基本类型的自动转换。
+            </summary>
+        </member>
+        <member name="F:NFinal.StringContainer.Empty">
+            <summary>
+            空容器类，用于判断初始化等。
+            </summary>
+        </member>
+        <member name="F:NFinal.StringContainer.value">
+            <summary>
+            字符串
+            </summary>
+        </member>
+        <member name="M:NFinal.StringContainer.Equals(System.Object)">
+            <summary>
+            比较判断
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.StringContainer.GetHashCode">
+            <summary>
+            GetHashCode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Equality(NFinal.StringContainer,System.String)">
+            <summary>
+            相等判断
+            </summary>
+            <param name="container"></param>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Inequality(NFinal.StringContainer,System.String)">
+            <summary>
+            不等判断
+            </summary>
+            <param name="container"></param>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.SByte)~NFinal.StringContainer">
+            <summary>
+            把SByte类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">SByte类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Byte)~NFinal.StringContainer">
+            <summary>
+            把Byte类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Byte类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Int16)~NFinal.StringContainer">
+            <summary>
+            把Int16类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Int16类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.UInt16)~NFinal.StringContainer">
+            <summary>
+            把UInt16类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">UInt16类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Int32)~NFinal.StringContainer">
+            <summary>
+            把Int32类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Int32类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.UInt32)~NFinal.StringContainer">
+            <summary>
+            把UInt32类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">UInt32类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Int64)~NFinal.StringContainer">
+            <summary>
+            把Int64类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Int64类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.UInt64)~NFinal.StringContainer">
+            <summary>
+            把UInt64类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">UInt64类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Boolean)~NFinal.StringContainer">
+            <summary>
+            把Boolean类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Boolean类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Char)~NFinal.StringContainer">
+            <summary>
+            把Char类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Char类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Decimal)~NFinal.StringContainer">
+            <summary>
+            把Decimal类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Decimal类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Double)~NFinal.StringContainer">
+            <summary>
+            把Double类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Double类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Single)~NFinal.StringContainer">
+            <summary>
+            把Single类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">Single类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.DateTime)~NFinal.StringContainer">
+            <summary>
+            把DateTime类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">DateTime类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.DateTimeOffset)~NFinal.StringContainer">
+            <summary>
+            把DateTimeOffset类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">DateTimeOffset类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.SByte})~NFinal.StringContainer">
+            <summary>
+            把SByte类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的SByte类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Byte})~NFinal.StringContainer">
+            <summary>
+            把Byte类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Byte类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Int16})~NFinal.StringContainer">
+            <summary>
+            把Int16类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Int16类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.UInt16})~NFinal.StringContainer">
+            <summary>
+            把UInt16类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的UInt16类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Int32})~NFinal.StringContainer">
+            <summary>
+            把Int32类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Int32类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.UInt32})~NFinal.StringContainer">
+            <summary>
+            把UInt32类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的UInt32类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Int64})~NFinal.StringContainer">
+            <summary>
+            把Int64类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Int64类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.UInt64})~NFinal.StringContainer">
+            <summary>
+            把UInt64类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的UInt64类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Boolean})~NFinal.StringContainer">
+            <summary>
+            把Boolean类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Boolean类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Char})~NFinal.StringContainer">
+            <summary>
+            把Char类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Char类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Decimal})~NFinal.StringContainer">
+            <summary>
+            把Decimal类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Decimal类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Double})~NFinal.StringContainer">
+            <summary>
+            把Double类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Double类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.Single})~NFinal.StringContainer">
+            <summary>
+            把Single类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的Single类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.DateTime})~NFinal.StringContainer">
+            <summary>
+            把DateTime类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的DateTime类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.Nullable{System.DateTimeOffset})~NFinal.StringContainer">
+            <summary>
+            把DateTimeOffset类型转为字符串容器类，即字符串类
+            </summary>
+            <param name="obj">可以为null的DateTimeOffset类型</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(System.String)~NFinal.StringContainer">
+            <summary>
+            初始化函数
+            </summary>
+            <param name="value">字符串</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.String">
+            <summary>
+            初始化函数
+            </summary>
+            <param name="stringContainar">字符串容器类</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.SByte">
+            <summary>
+            把字符串容器类转换为SByte类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Byte">
+            <summary>
+            把字符串容器类转换为Byte类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Int16">
+            <summary>
+            把字符串容器类转换为Int16类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.UInt16">
+            <summary>
+            把字符串容器类转换为UInt16类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Int32">
+            <summary>
+            把字符串容器类转换为Int32类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.UInt32">
+            <summary>
+            把字符串容器类转换为UInt32类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Int64">
+            <summary>
+            把字符串容器类转换为Int64类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.UInt64">
+            <summary>
+            把字符串容器类转换为UInt64类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Boolean">
+            <summary>
+            把字符串容器类转换为Boolean类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Char">
+            <summary>
+            把字符串容器类转换为Char类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Decimal">
+            <summary>
+            把字符串容器类转换为Decimal类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Double">
+            <summary>
+            把字符串容器类转换为Double类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Single">
+            <summary>
+            把字符串容器类转换为Single类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.DateTime">
+            <summary>
+            把字符串容器类转换为DateTime类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.DateTimeOffset">
+            <summary>
+            把字符串容器类转换为DateTimeOffset类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.SByte}">
+            <summary>
+            把字符串容器类转换为可为null的SByte类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Byte}">
+            <summary>
+            把字符串容器类转换为可为null的Byte类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Int16}">
+            <summary>
+            把字符串容器类转换为可为null的Int16类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.UInt16}">
+            <summary>
+            把字符串容器类转换为可为null的UInt16类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Int32}">
+            <summary>
+            把字符串容器类转换为可为null的Int32类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.UInt32}">
+            <summary>
+            把字符串容器类转换为可为null的UInt32类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Int64}">
+            <summary>
+            把字符串容器类转换为可为null的Int64类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.UInt64}">
+            <summary>
+            把字符串容器类转换为可为null的UInt64类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Boolean}">
+            <summary>
+            把字符串容器类转换为可为null的Boolean类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Char}">
+            <summary>
+            把字符串容器类转换为可为null的Char类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Decimal}">
+            <summary>
+            把字符串容器类转换为可为null的Decimal类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Double}">
+            <summary>
+            把字符串容器类转换为可为null的Double类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.Single}">
+            <summary>
+            把字符串容器类转换为可为null的Single类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.DateTime}">
+            <summary>
+            把字符串容器类转换为可为null的DateTime类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+        <member name="M:NFinal.StringContainer.op_Implicit(NFinal.StringContainer)~System.Nullable{System.DateTimeOffset}">
+            <summary>
+            把字符串容器类转换为可为null的DateTimeOffset类型
+            </summary>
+            <param name="stringContainar">字符串容器</param>
+        </member>
+    </members>
+</doc>
