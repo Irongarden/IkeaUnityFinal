@@ -15,6 +15,8 @@ public class text : MonoBehaviour
     //[SerializeField]
     private TextMeshProUGUI tex1;
     private string textFromDb;
+    [SerializeField]
+    private GameObject assemblyManager;
 
     //private InstructionList list = new InstructionList();
     
@@ -33,7 +35,7 @@ public class text : MonoBehaviour
 
     public void setInstruction(int instruction)
     {
-        tex1.text = GetComponent<Api>().getInstruction(instruction);
+        tex1.text = assemblyManager.GetComponent<Api>().getInstruction(instruction);
     }
 
    

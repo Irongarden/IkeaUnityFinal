@@ -8,7 +8,10 @@ using UnityEngine.Networking;
 public class Api : MonoBehaviour
 {
     
-    private const string url = "https://batchelor-project-ikea.herokuapp.com/instructions/";
+    private const string url = "https://batchelor-project-ikea.herokuapp.com/";
+    private const string testUrl = "http://localhost:8080/";
+    private const string instructions = "instructions/";
+    private const string buildTime = "updateBuildTime";
     private string id = "1";
     private List<Instructions> list = new List<Instructions>();
     
@@ -16,13 +19,14 @@ public class Api : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(GetRequest(url+id));
+        StartCoroutine(GetRequest(url+instructions+id));
     }
     
     IEnumerator GetRequest(string url)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
+            Debug.Log(url+instructions);
             yield return webRequest.SendWebRequest();
 
             switch (webRequest.result)
@@ -44,7 +48,10 @@ public class Api : MonoBehaviour
 
     IEnumerator postRequest(string url, string data)
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(url,data))
+        Debug.Log(url+buildTime);
+        data += ":"+id;
+        Debug.Log("Data: "+data);
+        using (UnityWebRequest webRequest = UnityWebRequest.Put(url+buildTime,data))
         {
             yield return webRequest.SendWebRequest();
 
@@ -54,7 +61,11 @@ public class Api : MonoBehaviour
                     case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(": Error: " + webRequest.error);
                     break;
-                
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    break;
             }
         }
     }
@@ -66,9 +77,9 @@ public class Api : MonoBehaviour
     }
     
     
-    public void updateBuildTime()
+    public void updateBuildTime(string bt)
     {
-    
+        StartCoroutine(postRequest(testUrl, bt));
     }
 
     

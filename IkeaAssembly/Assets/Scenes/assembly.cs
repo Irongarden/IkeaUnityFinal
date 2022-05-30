@@ -23,6 +23,8 @@ public class assembly : MonoBehaviour
     [SerializeField]
     private GameObject finishPanel;
 
+    private Boolean buildTimeSent = false;
+
     [SerializeField] private GameObject instructionText;
     
     private List<GameObject> instantiated;
@@ -73,6 +75,7 @@ public class assembly : MonoBehaviour
             if (finishTime == 0)
             {
                 finishTime = timer;
+                finishTime = Mathf.RoundToInt(finishTime);
                 finishPanel.SetActive(true);
             }
             click(ray);
@@ -108,11 +111,8 @@ public class assembly : MonoBehaviour
                 {
                     instantiate();
                     hit = new RaycastHit();
-                }else if (hit.collider.CompareTag("Finish") && step == maxStep)
-                {
-                    // You completed the asssembly of the product in ... time:
-                    //Debug.Log("FINISH - Build Time: " + finishTime);
-                }else if (hit.collider.CompareTag("prevStep") && !animationRunning && step > 0)
+                }
+                else if (hit.collider.CompareTag("prevStep") && !animationRunning && step > 0)
                 {
                     Debug.Log("Prev step");
                     previousStep();
@@ -174,6 +174,13 @@ public class assembly : MonoBehaviour
             Debug.Log("FINISH - Build Time: " + finishTime);
             assemblyFinishText.text = "Congrats! You completed the assembly in " + finishTime + " Seconds";
             assemblyFinishText.enabled = true;
+
+            if (!buildTimeSent)
+            {
+                GetComponent<Api>().updateBuildTime(finishTime.ToString());
+                buildTimeSent = true;
+            }
+            
             
         }
     }

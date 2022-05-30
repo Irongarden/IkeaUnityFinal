@@ -11,6 +11,7 @@ public class Inputs : MonoBehaviour
     [SerializeField]
     private GameObject cameraObject;
 
+    private RaycastHit hit;
     private Boolean animationRunning = false;
 
     // Start is called before the first frame update
@@ -27,11 +28,11 @@ public class Inputs : MonoBehaviour
         // Screen Clicks
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        //RaycastHit hit;
 
         try
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (Physics.Raycast(ray,out hit))
                 {
@@ -40,19 +41,15 @@ public class Inputs : MonoBehaviour
                         cameraObject.GetComponent<cameraController>().centerCamera();
                     }
 
-                    if (hit.collider.CompareTag("nextStep") && !animationRunning)
-                    {
-                        //GetComponent<assembly>().nextStep(ray,hit);
-                        //hit = new RaycastHit();
-                    }
-
                     if (!animationRunning && hit.collider.CompareTag("prevStep"))
                     {
                         cameraObject.GetComponent<cameraController>().centerCamera();
                     }
                     if(hit.collider.CompareTag("Finish"))
                     {
+                        hit = new RaycastHit();
                         GetComponent<assembly>().finishBuild();
+                        
                     }
                 }
             }
