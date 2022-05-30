@@ -13,29 +13,19 @@ using System.Net.Http.Headers;
 public class text : MonoBehaviour
 {
     //[SerializeField]
-    private TextMeshProUGUI tex1;
-    private string textFromDb;
+    private TextMeshProUGUI textField;
     [SerializeField]
     private GameObject assemblyManager;
 
-    //private InstructionList list = new InstructionList();
-    
     // Start is called before the first frame update
     void Start()
     {
-        tex1 = gameObject.GetComponent<TextMeshProUGUI>();
-        //tex1.text = "Hvad det nu er "; //textFromDb;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        textField = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     public void setInstruction(int instruction)
     {
-        tex1.text = assemblyManager.GetComponent<Api>().getInstruction(instruction);
+        textField.text = assemblyManager.GetComponent<Api>().getInstruction(instruction);
     }
 
    

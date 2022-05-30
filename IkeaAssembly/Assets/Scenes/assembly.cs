@@ -62,16 +62,13 @@ public class assembly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         timer += Time.deltaTime;
-
         b = Camera.main.transform.position + Vector3.forward;
         rotation = transform.rotation;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
         if (step>=maxStep && !animationRunning)
         {
-            
             if (finishTime == 0)
             {
                 finishTime = timer;
@@ -80,7 +77,6 @@ public class assembly : MonoBehaviour
             }
             click(ray);
             return;
-            
         }
         click(ray);
 
@@ -94,17 +90,13 @@ public class assembly : MonoBehaviour
         }
         catch (Exception)
         {
-            
         }
-        
-        
     }
 
     private void click(Ray ray)
     {
         if (Input.GetKeyDown((KeyCode.Mouse0)))
         {
-            Debug.Log("Step: "+step);
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.CompareTag("nextStep") && !animationRunning && step!= maxStep)
@@ -114,7 +106,6 @@ public class assembly : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("prevStep") && !animationRunning && step > 0)
                 {
-                    Debug.Log("Prev step");
                     previousStep();
                     hit = new RaycastHit();
                 }
@@ -136,24 +127,18 @@ public class assembly : MonoBehaviour
             {
                 animationRunning = false;
                 tool = false;
-                    
             } 
         }
         else
         {
             String temp = (point).ToString();
             Transform t = instantiated[0].transform.Find(temp).transform;
-            //instantiated[1].transform.position = Vector3.MoveTowards(instantiated[1].transform.position, instantiated[0].transform.position, 1*Time.deltaTime);
             instantiated[partStep-1].transform.position = Vector3.MoveTowards(instantiated[partStep-1].transform.position, t.position, 1*Time.deltaTime);
-
-
             if (Vector3.Distance(t.position, instantiated[partStep - 1].transform.position) < 0.001f)
             {
                 animationRunning = false;
                 tool = true;
                 point++;
-                    
-                    
             }  
         }
     }
@@ -164,24 +149,19 @@ public class assembly : MonoBehaviour
         {
             instantiate(); 
         }
-        
     }
 
     public void finishBuild()
     {
         if (step == maxStep)
         {
-            Debug.Log("FINISH - Build Time: " + finishTime);
             assemblyFinishText.text = "Congrats! You completed the assembly in " + finishTime + " Seconds";
             assemblyFinishText.enabled = true;
-
             if (!buildTimeSent)
             {
                 GetComponent<Api>().updateBuildTime(finishTime.ToString());
                 buildTimeSent = true;
             }
-            
-            
         }
     }
     
@@ -189,7 +169,6 @@ public class assembly : MonoBehaviour
 
     private void instantiate()
     {
-        
         if (partStep.Equals(0))
         {
             instructionText.GetComponent<text>().setInstruction(0);
@@ -207,8 +186,6 @@ public class assembly : MonoBehaviour
                 instantiated[partStep].transform.parent = transform;
                 partStep++;
                 animationRunning = true;
-                //tool = true;
-                
             }
             else
             {
@@ -216,7 +193,6 @@ public class assembly : MonoBehaviour
                 instantiatedTools.Add(Instantiate(tools[0],b,rotation));
                 instantiatedTools[toolStep].transform.parent = transform;
                 toolStep++;
-                //instantiated.Add(Instantiate(tools[0],b,Quaternion.identity));
                 animationRunning = true;
             }
                 
@@ -227,14 +203,10 @@ public class assembly : MonoBehaviour
 
     private void previousStep()
     {
-        
-        
-        Debug.Log("Previous step?");
         if (tool)
         {
             partStep--;
             step--;
-            Debug.Log("Instantiated Parts: "+instantiated);
             Destroy(instantiated[partStep]);
             instantiated.RemoveAt(partStep);
             tool = false;
@@ -247,7 +219,6 @@ public class assembly : MonoBehaviour
         {
             toolStep--;
             step--;
-            Debug.Log("Instantiated Tools: "+instantiatedTools);
             Destroy(instantiatedTools[toolStep]);
             instantiatedTools.RemoveAt(toolStep);
             tool = true;

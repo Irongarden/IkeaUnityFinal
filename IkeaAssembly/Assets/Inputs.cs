@@ -13,22 +13,14 @@ public class Inputs : MonoBehaviour
 
     private RaycastHit hit;
     private Boolean animationRunning = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
         animationRunning = GetComponent<assembly>().getAnimationBool();
         zoomCheck();
-        // Screen Clicks
-        
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hit;
 
         try
         {
@@ -49,7 +41,6 @@ public class Inputs : MonoBehaviour
                     {
                         hit = new RaycastHit();
                         GetComponent<assembly>().finishBuild();
-                        
                     }
                 }
             }

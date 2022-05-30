@@ -24,22 +24,21 @@ public class Api : MonoBehaviour
     
     IEnumerator GetRequest(string url)
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             Debug.Log(url+instructions);
-            yield return webRequest.SendWebRequest();
-
-            switch (webRequest.result)
+            yield return request.SendWebRequest();
+            switch (request.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
                     case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(": Error: " + webRequest.error);
+                    Debug.LogError(": Error: " + request.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(": HTTP Error: " + webRequest.error);
+                    Debug.LogError(": HTTP Error: " + request.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    list = JsonConvert.DeserializeObject<List<Instructions>>(webRequest.downloadHandler.text);
+                    list = JsonConvert.DeserializeObject<List<Instructions>>(request.downloadHandler.text);
                     Debug.Log(list);
                     break;
             }
@@ -48,21 +47,19 @@ public class Api : MonoBehaviour
 
     IEnumerator postRequest(string url, string data)
     {
-        Debug.Log(url+buildTime);
         data += ":"+id;
-        Debug.Log("Data: "+data);
-        using (UnityWebRequest webRequest = UnityWebRequest.Put(url+buildTime,data))
+        using (UnityWebRequest request = UnityWebRequest.Put(url+buildTime,data))
         {
-            yield return webRequest.SendWebRequest();
+            yield return request.SendWebRequest();
 
-            switch (webRequest.result)
+            switch (request.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
                     case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(": Error: " + webRequest.error);
+                    Debug.LogError(": Error: " + request.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(": HTTP Error: " + webRequest.error);
+                    Debug.LogError(": HTTP Error: " + request.error);
                     break;
                 case UnityWebRequest.Result.Success:
                     break;
@@ -79,10 +76,8 @@ public class Api : MonoBehaviour
     
     public void updateBuildTime(string bt)
     {
-        StartCoroutine(postRequest(testUrl, bt));
+        StartCoroutine(postRequest(url, bt));
     }
-
-    
 }
 [Serializable]
 public class Instructions
