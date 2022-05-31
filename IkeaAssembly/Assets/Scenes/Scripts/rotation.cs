@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotation : MonoBehaviour
+public class Rotation : MonoBehaviour
 {
     private Vector3 firstpoint = new Vector3();
     private Vector3 secondpoint = new Vector3();

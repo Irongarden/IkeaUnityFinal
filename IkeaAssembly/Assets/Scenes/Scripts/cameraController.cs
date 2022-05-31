@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cameraController : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private GameObject target;
@@ -28,7 +28,7 @@ public class cameraController : MonoBehaviour
         transform.LookAt(target.position);
     }
 
-    public void zoomin()
+    public void zoomIn()
     {
         if (distanceToTarget > minDist)
         {
