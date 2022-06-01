@@ -12233,18 +12233,6 @@ IL2CPP_EXTERN_C  String_t* Single_ToString_m7631D332703B4197EAA7DC0BA067CE7E1633
 	_returnValue = Single_ToString_m7631D332703B4197EAA7DC0BA067CE7E16334D8B(_thisAdjusted, ___format0, ___provider1, method);
 	return _returnValue;
 }
-// System.Single System.Single::Parse(System.String)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Single_Parse_mA1B20E6E0AAD67F60707D81E82667D2D4B274D6F (String_t* ___s0, const RuntimeMethod* method)
-{
-	{
-		String_t* L_0 = ___s0;
-		NumberFormatInfo_t58780B43B6A840C38FD10C50CDFE2128884CAD1D * L_1;
-		L_1 = NumberFormatInfo_get_CurrentInfo_m604B9BFDE58530F94955E0EF1A523D37EA87DF02(/*hidden argument*/NULL);
-		float L_2;
-		L_2 = Single_Parse_mC2D99DBBEF2C3FBEC9B44609EB5A8EB668725321(L_0, ((int32_t)231), L_1, /*hidden argument*/NULL);
-		return L_2;
-	}
-}
 // System.Single System.Single::Parse(System.String,System.IFormatProvider)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Single_Parse_m2CEE3E81A3D2E04934160117DFA3729B8158F101 (String_t* ___s0, RuntimeObject* ___provider1, const RuntimeMethod* method)
 {
@@ -26492,25 +26480,6 @@ IL_0053:
 		int32_t L_13 = ___bufferSize2;
 		bool L_14 = ___leaveOpen3;
 		StreamWriter_Init_mD8AACA61F24A069BCE1C3241F21A2D3530CDF828(__this, L_11, L_12, L_13, L_14, /*hidden argument*/NULL);
-		return;
-	}
-}
-// System.Void System.IO.StreamWriter::.ctor(System.String,System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StreamWriter__ctor_m6A81CE9EDAB3AAB4270E88539EA83D945954CD0E (StreamWriter_t3E267B7F3C9522AF936C26ABF158398BB779FAF6 * __this, String_t* ___path0, bool ___append1, const RuntimeMethod* method)
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StreamWriter_t3E267B7F3C9522AF936C26ABF158398BB779FAF6_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		String_t* L_0 = ___path0;
-		bool L_1 = ___append1;
-		IL2CPP_RUNTIME_CLASS_INIT(StreamWriter_t3E267B7F3C9522AF936C26ABF158398BB779FAF6_il2cpp_TypeInfo_var);
-		Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * L_2;
-		L_2 = StreamWriter_get_UTF8NoBOM_mF4A5DBCC4B3E4B3AE868C54DB743D8875B329C38(/*hidden argument*/NULL);
-		StreamWriter__ctor_m767F52D11F1D8342131B226733F66BA5CEAD36EB(__this, L_0, L_1, L_2, ((int32_t)1024), /*hidden argument*/NULL);
 		return;
 	}
 }

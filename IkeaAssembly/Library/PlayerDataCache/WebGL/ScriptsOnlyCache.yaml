@@ -2,14 +2,11 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Api
+    - Assembly
+    - CameraController
     - Inputs
-    - assembly
-    - cameraController
-    - rotation
-    - symbolController
+    - Rotation
     - text
-    Unity.ProBuilder.dll:
-    - UnityEngine.ProBuilder.ProBuilderMesh
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -41,7 +38,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Lack.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -87,31 +84,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2194}
     - Class: 114
-      Script: {instanceID: 2440}
+      Script: {instanceID: 2544}
     - Class: 114
-      Script: {instanceID: 2546}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 2636}
+      Script: {instanceID: 2680}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2726}
     - Class: 114
-      Script: {instanceID: 2728}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 2886}
+      Script: {instanceID: 3106}
     - Class: 114
-      Script: {instanceID: 3108}
+      Script: {instanceID: 3728}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 4250}
     - Class: 114
-      Script: {instanceID: 4252}
+      Script: {instanceID: 4444}
     - Class: 114
-      Script: {instanceID: 4446}
+      Script: {instanceID: 4760}
     - Class: 114
-      Script: {instanceID: 4762}
-    - Class: 114
-      Script: {instanceID: 5040}
-    - Class: 114
-      Script: {instanceID: 5178}
+      Script: {instanceID: 5038}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -162,7 +155,7 @@ ScriptsOnlyBuild:
       Hash: 66bca5cc6a18c5298ec75235e56a84d6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: cameraController
+    className: CameraController
   - hash:
       serializedVersion: 2
       Hash: 9c7c87712e298256d276eb96e02a57b1
@@ -264,7 +257,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: rotation
+    className: Rotation
   - hash:
       serializedVersion: 2
       Hash: 800c50acba124432abb4cf0d47202e06
@@ -291,12 +284,6 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 89a44993c9b29de3b95b46594f142b42
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: symbolController
-  - hash:
-      serializedVersion: 2
       Hash: 4f60ff347d4efee4ef8cc7f627735018
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -318,7 +305,7 @@ ScriptsOnlyBuild:
       Hash: bc891b55aa0a1c1ba469cedd7d9ba3f8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: assembly
+    className: Assembly
   - hash:
       serializedVersion: 2
       Hash: 27e5341178f188b89bdc6495710b590c
@@ -849,5 +836,5 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   platform: 20
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/Lack.unity
   playerPath: C:/Users/mathi/OneDrive - ViaUC/Skrivebord/Bachelor/webBuild

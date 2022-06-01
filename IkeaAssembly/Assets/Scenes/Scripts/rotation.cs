@@ -30,8 +30,8 @@ public class Rotation : MonoBehaviour
             }
             if(Input.GetTouch(0).phase==TouchPhase.Moved) {
                 secondpoint = Input.GetTouch(0).position;
-                xAngle = xAngTemp + (secondpoint.x - firstpoint.x) * 180.0f / Screen.width;
-                yAngle = yAngTemp - (secondpoint.y - firstpoint.y) *90.0f / Screen.height;
+                xAngle = xAngTemp - (secondpoint.x - firstpoint.x) * 180.0f / Screen.width;
+                yAngle = yAngTemp + (secondpoint.y - firstpoint.y) *90.0f / Screen.height;
                 transform.rotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
             }
         }
